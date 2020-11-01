@@ -1,0 +1,14 @@
+<div>
+    <form #loginForm="ngForm" (ngSubmit)="submit()">
+        <div>
+            <input type="text" class="form-control" placeholder="username" name="name" required ngModel>
+        </div>
+        <div>
+            <input type="text" class="form-control" placeholder="email" name="email" required ngModel>
+        </div>
+        <div><input type="checkbox" name="check" ngModel></div>
+        <div>
+            <button type="submit" [disabled]="!loginForm.valid">click</button>
+        </div>
+        </form>
+</div>

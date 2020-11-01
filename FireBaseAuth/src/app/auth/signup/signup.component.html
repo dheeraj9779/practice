@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div>
+        <form [formGroup]="regForm" (ngSubmit)="submit()">
+            <div formGroupName="details">
+            <div>
+                <input type="text" placeholder="name" formControlName="name">
+                <small class="text-danger" *ngIf="regForm.get('details.name').touched && regForm.get('details.name').invalid">
+                <small *ngIf="regForm.get('details.name').errors['errorCode']">
+                    User not allowed
+                </small>
+                </small>
+            </div>
+            <div>
+                <input type="text" placeholder="email" formControlName="email">
+            </div>
+        </div>
+            <div>
+                <input type="text" placeholder="password" formControlName="password">
+            </div>
+            <div formArrayName="hobbies">
+                <ng-container *ngFor="let hobby of regForm.get('hobbies')['controls']; index as i ">
+                <div>
+                    <input type="text" placeholder="hobbies" formControlName="{{i}}">
+                </div>
+                </ng-container>
+                <div>
+                    <small (click)="addHobbies()">+Hobbies</small>
+                </div>
+            </div>
+            <button class="btn btn-success" type="submit">submit</button>
+        </form>
+        </div>
+</div>
